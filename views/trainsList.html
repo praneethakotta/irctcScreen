@@ -1,0 +1,89 @@
+<div class="listMain" ng-controller="listController">
+    <div class="selectionHeader">
+        <span class="floatLeft">From</span><input type="text"value="Ernakulam" id="fromArea" class="floatLeft">
+        <span class="floatLeft">To</span><input type="text"value="Chennai" id="toArea" class="floatLeft">
+        <span class="floatLeft">On</span>
+        <ul class="selectDate floatLeft" >
+            <li >
+                <a class="floatLeft">12th Dec 2014<img src="images/downArrow.png" class="floatRight arrowWdthHt"></a>
+                <ul class="showHideList">
+                    <li><a >13th Dec 2014</a></li>
+                    <li><a>14th Dec 2014</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="floatLeft">Class</span>
+       <ul class="selectDate floatLeft" style="width:8%;" >
+            <li >
+                <a class="floatLeft">3A<img src="images/downArrow.png"class="floatRight arrowWdthHt"></a>
+                <ul class="showHideList">
+                    <li><a >1A</a></li>
+                    <li><a>2A</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="floatLeft">Type</span>
+       <ul class="selectDate floatLeft" style="width:11%">
+            <li >
+                <a class="floatLeft">General<img src="images/downArrow.png"style="margin-top:3%;"class="floatRight arrowWdthHt"></a>
+                <ul class="showHideList">
+                    <li><a >1A</a></li>
+                    <li><a>2A</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" id="filters" value="Edit Plan" style="width:10%;margin-top:-0.5%;" class="floatRight">
+    </div>
+    <div class="sortByDiv">
+        <span class="floatLeft">Sort by</span>
+        <ul class="sortOptions floatLeft" style="margin-top:-0.5%;">
+            <li >
+                <a class="floatLeft">Availability<img src="images/downArrow.png" class="floatRight arrowWdthHt"></a>
+                <ul class="showHideList">
+                    <li><a >time</a></li>
+                    <li><a>Cost</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" id="filters" value="Show All Filters"class="floatRight">
+    </div>
+    <ul class="media-list">
+        <li class="media" ng-repeat="train in trainsInfo">
+            <div class="trainNo floatLeft">TrainNo. {{train.trainNumb}}</div>
+            <div class="trainNo floatLeft">{{train.name}}</div>
+            <div class="trainNo floatLeft">
+                <p class="trainTiming commonLineHt" style="font-weight:800;">ERS</p>
+                <p class="fromPlace commonLineHt">Ernakulam</p>
+                <p class="trainTiming commonLineHt">{{train.departure}}</p>
+            </div>
+            <div class="distance floatLeft commonLineHt" ng-class="{
+            'limegreen': train.status === 'Available', 
+            'gold': train.status !== 'Available'}">
+                <p>{{train.distance}}</p>
+                <p>{{train.duration}}</p>
+            </div>
+            <div class="trainNo floatLeft">
+                <p class="trainTiming commonLineHt" style="font-weight:800;">MAS</p>
+                <p class="toPlace commonLineHt">ChennaiCentral</p>
+                <p class="trainTiming commonLineHt">{{train.arrival}}</p>
+            </div>
+            <ul class="trainNo showClass floatLeft">
+                <li >
+                    <a style="font-weight:800;">3A<img src="images/downArrow.png" class="arrowWdthHt"></a>
+                    <ul class="showHideList">
+                        <li><a >1A</a></li>
+                        <li><a>2A</a></li>
+                        <li><a>Sleeper</a></li>
+                        <li><a>General</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="trainNo floatLeft" style="width:15%;margin-top:-1.5%;">
+                <div class="trainStatus " ng-class="{
+                'limegreen': train.status === 'Available', 
+                'gold': train.status !== 'Available'}">{{train.status}}</div>
+                <div class="trainStatus darkBlue" >Book Now</div>
+            </div>
+        </li>
+    </ul>
+</div>
